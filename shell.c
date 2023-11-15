@@ -10,7 +10,7 @@ void shell(char **argv, char **env);
 void shell(char **argv, char **env)
 {
 	pid_t proc_id;
-	char *command = NULL, *string, *prompt = "$ ";
+	char *command = NULL, *string, *prompt = "$ ", *final_command = NULL;
 	size_t n = 0;
 	ssize_t char_num;
 	int i, j, status;
@@ -51,7 +51,7 @@ void shell(char **argv, char **env)
 	argv[j + 1] = strtok(NULL, " ");
 	 ++j;
 	}
-/*final_command = get_location(argv[0]);*/
+final_command = get_location(argv[0]);
 /*fork must not be called if command doeasn't found*/
 
 	/**
@@ -64,13 +64,13 @@ void shell(char **argv, char **env)
 	{
 		free(string);
 		free(command);
-		/*free(final_command);*/
+		free(final_command);
 		exit(EXIT_FAILURE);
 	}
 
 	if (proc_id == 0)
 	{
-	execve(argv[0], argv, env);
+	execve(final_command, argv, env);
 	printf("%s :no such file or directory\n", argv[0]);
 	}
 
