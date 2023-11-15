@@ -38,6 +38,7 @@ void task1(char *argv[], char **env)
 
 	while (1)
 	{
+		if (isatty(STDIN_FILENO))
 		printf("%s", prompt);/*printing prompt*/
 		char_num = getline(&command, &n, stdin);/*getting command*/
 
