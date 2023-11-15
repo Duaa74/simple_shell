@@ -2,8 +2,14 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-void task1(char **argv, char **env);
-
+void task1(char *argv[], char **env);
+/**
+ * main - main function.
+ * @ac: number of arguments
+ * @argv: arguments
+ * @env: environment
+ * Return: number of arguments
+*/
 int main(int ac, char **argv, char **env)
 {
 	if (ac == 1)
@@ -11,6 +17,12 @@ int main(int ac, char **argv, char **env)
 	return (0);
 
 }
+/**
+ * task1 - creat a simple shell.
+ * @argv: arguments
+ * @env: environment
+ * Return: the command line arguments
+*/
 void task1(char *argv[], char **env)
 {
 /*setting variable*/

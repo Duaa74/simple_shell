@@ -10,5 +10,5 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <errno.h>
-void task1(char **argv, char **env);
+int main(int ac, char **argv, char **env);
 #endif
