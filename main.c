@@ -7,8 +7,8 @@ void task1(char **argv, char **env);
 int main(int ac, char **argv, char **env)
 {
 	if (ac == 1)
-		task1(argv,env);
-	return(0);
+		task1(argv, env);
+	return (0);
 
 }
 void task1(char *argv[], char **env)
@@ -24,7 +24,7 @@ void task1(char *argv[], char **env)
 	argv[0] = NULL;
 	argv[1] = NULL;
 
-	while(1)
+	while (1)
 	{
 		printf("%s", prompt);/*printing prompt*/
 		char_num = getline(&command, &n, stdin);/*getting command*/
@@ -32,29 +32,28 @@ void task1(char *argv[], char **env)
 		if (char_num == -1)
 		{
 			free(command);
-			exit (EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
 
 		/*allocate space for string*/
 		string = malloc(sizeof(char) * (char_num - 1));
 		if (string == NULL)
-			exit (EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 
 		/*deleting the NULL operator*/
 		i = 0;
-		while(command[i] != '\0')
+		while (command[i] != '\0')
 		{
-			string[i-1] = command[i-1];
+			string[i - 1] = command[i - 1];
 			i++;
 		}
 		argv[0] = string;
 		argv[1] = NULL;
 
-		/*creating a child proceess to make 
-		 * * my shell print $ after the excution*/
+		/*creating a child proceess to make*/
 
 		proc_id = fork();
-		if(proc_id == -1)
+		if (proc_id == -1)
 		{
 			free(string);
 			free(command);
